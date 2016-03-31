@@ -1,0 +1,117 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; vertical-align: baseline; list-style:none; }
+body{position:relative;margin:0 ;padding: 0;background: #fff;min-width: 1280px; -webkit-font-smoothing: antialiased;font-family: '微软雅黑';}
+a {text-decoration: none;  }
+input,button{margin:0 ;padding: 0;}
+.clear{ clear: both;}
+.fl{ float: left;}
+.fr{ float: right;}
+/*index*/
+.headerWarp { width: 100%;   position: fixed;top:0;left:0;height:58px; background: #fff; overflow: hidden; z-index: 10; }
+.header, .banner .text, .describe{ width: 1280px; margin:  0 auto; position: relative;}
+.header .logo{ width:102px; height: 31px ; display: inline-block;padding-top: 13px;  }
+.header ul li{ float: left; }
+.header ul li  a { display: block;height:18px;padding:18px 20px; color: #787b83; font-size: 14px;}
+.header ul li  a:hover{color: #e74f4d;border-bottom:4px solid #e74f4d;  }
+.banner{text-align: center;}
+.login{position: relative; margin-left:20px;text-indent: 22px;padding-top: 18px;font-size: 14px;}
+.login i{position: absolute; width:14px; height:17px;background: url("../images/icon1.png") no-repeat left top; background-size: 14px 17px;left:0px;top:20px;}
+.header ul li a.active{color: #e74f4d;border-bottom:4px solid #e74f4d;}
+.login a{ color: #e74f4d; font-size: 14px; font-weight: bold;}
+.banner{position:relative;margin-top:58px;width:100%;height:690px;background: url("../images/banner.jpg") no-repeat center top; background-size:cover; overflow: hidden;   }
+.banner .text{ color: #fff; text-align: left; line-height: 16px;padding-left: 113px;}
+.banner .text h1{  font-size:60px;padding: 228px 0 36px 0; font-weight: normal; }
+.banner .text p{  font-size:21px;line-height: 32px; }
+.banner .text button{ border: 0;background: #e7504d; color: #fff; font-size:30px; letter-spacing:10px; font-size: 30px;padding: 20px 100px; margin-top:65px; cursor: pointer;  }
+.banner .text button:hover,.searchBtn:hover{ background: #db4644;}
+.describe > div{ display: inline-block;text-align: center;padding: 0px 0 65px; position: relative;}
+.describe .text  p{border-right:2px solid #aaaaaa; color: #767777; font-size:14px; line-height:20px; height: 50px; width: 155px;padding: 0 82px ; word-wrap:break-word;   }
+.describe .text:nth-child(4)  p{border-right:none;padding: 0 0px 0 82px;   }
+.describe span{ background: url("../images/desbg.png")  no-repeat; display: block; background-size: cover; width: 42px; height: 43px; margin:44px 0px 44px 132px;     }
+.describe .icon1{   background-position: 0 0; }
+.describe .icon2{   background-position: 2px -58px; }
+.describe .icon3{   background-position: 0 -114px; }
+.describe .icon4{   background-position: 0 -180px; }
+.newWord .text{ width: 100%;text-align: center; background: #ededed;padding: 85px 0;}
+.newWord .text h1{ color:rgba(51,51,51,.5); font-size: 53px; padding-top:49px; font-weight: normal; }
+.newWord .map{width:100%;height:340px;background: url("../images/map.jpg") no-repeat center top; background-size:cover; }
+.map h3{ width:  100%; overflow: hidden;position: relative; font-weight: normal; padding-top: 52px; height:50px; font-size: 21px; color: #fff; text-align:  center;}
+.map h3 span{ width:32px; height: 3px; background: #fff;position: absolute; left:50%;margin-left: -16px;bottom: 0;}
+.map p{ color: #fff; margin-top:20px; font-size: 12px; color: #fff;text-align: center;}
+.selectWrap{ width: 1028px; margin: 50px auto 0;}
+.selectWrap .select{ width: 235px;  position: relative;  margin-left: 28px; }
+.selectWrap .select:nth-of-type(1),.actityWarp .act-item:nth-of-type(1){  margin-left:0px; }
+.selectWrap .select span{width: 235px;height: 35px; line-height: 35px; display:block;background: #fff url("../images/icon2.png") no-repeat 200px center; background-size: 18px 18px; color: #a8aaaa; font-size:12px;text-indent: 15px;}
+.selectWrap .select ul{ position:relative; display:none;border: 1px solid #be4e48; border-top: none; width: 100%;}
+.selectWrap .select ul li{width: 235px; cursor: pointer; text-indent: 33px; height: 20px; line-height:20px;color:#323333;height: 35px; background: #e3e3e4; font-size: 12px; line-height: 35px; }
+.selectWrap .select ul li:hover{color:#fff;  background: #be4e48 url("../images/icon4.png") no-repeat 10px center;}
+.selectWrap .select ul li.options{color:#fff;  background: #be4e48 url("../images/icon4.png") no-repeat 10px center;}
+.selectWrap .select span.select{border: 1px solid #be4e48;}
+.searchBtn{ width: 235px; height: 35px;border: 0;background: #be4e48; color: #fff; font-size: 14px; letter-spacing:20px; text-align: center; line-height: 35px;}
+.actityWarp{ background: #f8f7f7;padding: 95px 0 110px  0; width: 100%;}
+.actity{ margin: 0 auto; width: 990px;overflow:hidden; text-align: center;}
+.actity .act-item{ margin-left: 36px; font-size: 12px;}
+.actity .photo{ border: #dadada; padding: 7px;background: #fff;}
+
+.actity .act-item h3{ font-weight: normal; color: #333; padding: 13px 0 5px;}
+.actity .act-item p{ color: #bcbdbd; font-size: 10px;}
+.actity .special h3{ font-size:16px; letter-spacing: 20px;padding:0px;}
+.actity .special  p{ color: #bcbdbd; font-size: 10px;padding: 10px 0px;}
+.newWordMore{ width: 100%; height: 574px; background:#ffffff url("../images/people.jpg") no-repeat left top;background-size:68.5%; text-align: center;}
+.newWordMore .people{ width: 62.5%; color: #fff; text-align: center;  }
+.newWordMore .people h2 { font-size: 50px; font-weight: normal; padding-top:125px; }
+.newWordMore .people  .time{ font-size:158px;}
+.newWordMore .people  .date{  font-size:22px;line-height:43px;}
+.newWordMore  .text{ width: 31.5%; text-align: center;position: relative; }
+.newWordMore  .text h3{ font-size: 20px; margin-top:160px;position: relative;color:#323333;  }
+.newWordMore  .text h3 span.line{  width:25px; height:1px; background: #000; color:#323333;  font-size:16px; display: inline-block;-webkit-transform:rotate(-45deg);position: relative;top: -5px; left: -8px;    }
+.newWordMore  .text h3 span.num{  color:#C00;  font-size:20px; margin-left: -10px;    }
+.newWordMore  .text p{  width:285px;  margin:0 auto;  text-align:left;  line-height:35px;  padding-top:40px;  font-size:14px;  color:#666;  }
+.newWordMore  .text a{  width:100px;  height:30px; display:block;    line-height:30px;  border:2px solid #E46868;  color:#E46868;  margin:50px auto 0;   }
+.newWordMore  .text ul{ margin-top:40px;}
+.newWordMore  .text ul li{  width:10px;  height:10px;  border-radius:50px;  border:1px solid #999;  display:inline-block;  margin:0px 10px;}
+.newWordMore  .text ul li.active{ background:#E46868;}
+.NewageWrap { width: 100%; text-align: center; line-height: 25px; overflow: hidden; }
+.NewageWrap .NewageLeft{ width:33%; height: 520px; background: #e7504d; color: #fff; }
+.NewageWrap .NewageMiddle{ width:33%; height: 520px; background: #fff; color: #323333;}
+.NewageWrap .NewageRight{ width:34%;height: 520px; overflow: hidden;  background: url("../images/girl.jpg")  no-repeat center top;  background-size: cover;  position: relative;}
+.NewageWrap .NewageLeft a{  width:100px;  height:30px; display:block;    line-height:30px;  border:2px solid #fff;  color:#fff; margin: 0 auto;   }
+.NewageWrap .NewageMiddle a{  width:100px;  height:30px; display:block;    line-height:30px;  border:2px solid #E46868;  color:#e74f4d;margin: 0 auto;   }
+.NewageWrap p{ margin-top: 170px;}
+.NewageWrap .line{  width:25px; height:2px; background: #fff; color:#323333;  font-size:16px; display: block; margin: 20px auto ; }
+.NewageWrap .grey{   background: #323333; }
+
+footer{ width: 100%; background: #32363e;}
+.contactWrap{ text-align: center; height: 360px; overflow: hidden;  color: #fff;}
+.contactWrap h3{ font-size: 21px; margin: 90px 0 10px 0;}
+.contactWrap p{ font-size: 12px; line-height: 20px;}
+
+.contanctSumit{ margin: 30px 0;}
+.contanctSumit input{width: 430px; height: 40px;background: #fff;text-indent: 15px; font-size: 14px;color: #333; border: 0; }
+.contanctSumit button{width: 80px; height: 40px;background: #707278;text-align:center; font-size: 15px;color: #fff; border: 0; cursor: pointer; }
+.contanctSumit button:hover{background: #5c5e62; }
+.contactWrap .friend_links span{width: 30px; cursor: pointer; height:30px; display: inline-block; background: url("../images/linkchat.png")  no-repeat center top;  background-size: cover;      }
+.contactWrap .friend_links .qq{   background-position: -14px 0px; }
+.contactWrap .friend_links .sina{   background-position: -65px 0px; }
+.contactWrap .friend_links .tiweer{   background-position: -118px 0px; }
+.contactWrap .friend_links .facbook{   background-position: -165px 0px; }
+.copyRight{width: 100%; height: 60px; background: #303039; overflow: hidden;}
+.copyRight .text{ width: 1140px; margin: 0 auto;color: #fff; font-size: 12px; }
+.copyRight span{height: 60px; line-height: 60px; display: block;}
+.triangleL {    position: absolute;  left: -30px;  top: 290px;  width: 0;  height: 0;  border-right: 30px solid #fff;  border-top: 20px solid transparent;  border-bottom: 20px solid transparent;  z-index: 20;   }
+.triangleR {    position: absolute;  left: 0px;  top: 246px;  width: 0;  height: 0;  border-left: 30px solid #fff;  border-top: 20px solid transparent;  border-bottom: 20px solid transparent;  z-index: 20;   }
+.volunteerWarp{ }
+.volunteer{  padding:110px 0;   text-align:center;  }
+.volunteer h3{  font-size:20px;  }
+.volunteer .line{  width:30px;  height:2px;background:#E7504D;   margin:10px auto; }
+.volunteer p{  font-size:12px;  color:#666;   line-height:20px;  }
+.contactUs{ width:1050px; overflow: hidden;  height:450px;  margin:0 auto;  }
+.contactUs .text ul li{  width:350px; height:130px;  }
+.contactUs .text ul li h6{  font-size:14px;  }
+.contactUs .text ul li p{  font-size:12px;  color:#aaa;  line-height:25px;
+    margin-top:20px;
+}
+.contactUs .text ul li a{  font-size:12px;  padding-left:20px;  background:url(../images/icon5.png) no-repeat left;  }
+.contactUs .text form{  width:635px;  }
+.contactUs .text input{  width:295px;  height:40px;  border:none;  background:#EDEDEE;  margin:10px 5px;  padding-left:10px;  }
+.contactUs .text textarea{  width:96%;  height:100px;  border:none;  margin:5px;  padding:10px;  font-size:14px;  background:#EDEDEE;  }
+.contactUs .text .btn{  width:99%;  text-align:center;  font-size:16px;  }
