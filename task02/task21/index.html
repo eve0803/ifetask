@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ife-task20</title>
+    <style>
+       .divwrap{ width:100%;padding: 10px; font-family: Helvetica, sans-serif}
+       #tag-input{ padding: 0px; height: 30px; line-height: 30px; width:300px }
+        #tag-container div {
+            display: inline-block;
+            font-size: 30px;
+            text-align: center;
+            padding: 0 15px;
+            margin: 2px 0;
+            margin-right: 10px;
+            height: 50px;
+            line-height: 50px;
+            background-color: red;
+            color: #FFFFFF;
+        }
+
+        #hobby-container div {
+            display: inline-block;
+            font-size: 30px;
+            text-align: center;
+            padding: 0 15px;
+            margin: 2px 0;
+            margin-right: 10px;
+            height: 50px;
+            line-height: 50px;
+            background-color: red;
+            color: #FFFFFF;
+        }
+        button{ background: blueviolet;  color: #fff;padding:10px 20px; cursor: pointer; border: 0; text-align: center;}
+    </style>
+</head>
+<body>
+<div class="divwrap">Tag: <input type="text" id="tag-input" placeholder="输入标签，然后空格，逗号，回车确认"></div>
+<div  class="divwrap" id="tag-container"></div>
+<div  class="divwrap"> <textarea id="hobby-input" placeholder="篮球，足球，台球"  rows="6" cols="30">篮球，足球，台球</textarea></div>
+<div  class="divwrap"><button id="hobby-btn">确认兴趣爱好</button></div>
+<div  class="divwrap" id="hobby-container">
+</div>
+<script src="task.js"></script>
+</body>
+</html>
