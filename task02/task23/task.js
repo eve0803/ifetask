@@ -6,17 +6,52 @@
     var timer = null;
     var btnWarp=$('btnWrap');
     var oBtns = btnWarp.getElementsByTagName("button");
-    var rootNode = $("root");
-    var lock = false;
+    var rootNode = $("one");
+   //动画进行时标志
+    var  lock = false;;
     var BFindex = 0;//广度优先遍历自增标识符
+    var showQueue = [];    //存放树的数据，便于遍历
     //添加事件
     function $(id) {
         return typeof id === 'string' ? document.getElementById(id) : id;
     }
 
+//去除两边空格
+    function trim(str) {
+        return str.replace(/(^\s*)|(\s*$)/g, '');
+    }
 
 // 深度优先遍历
-    function traverseDF(node,nodeList){
+    function traverseDF(node) {
+       //模拟栈，用于深度优先
+        var stack = [];
+        stack.push(node);
+        while (stack.length > 0) {
+            var temp = stack.pop();
+            //按深度优先遍历顺序存放进全局数组内，用于动画展示
+            showQueue.push(temp);
+            for (var i = temp.children.length - 1; i >= 0; i--) {
+                if (temp.children[i]) stack.push(temp.children[i]);
+            }
+        }
+
+    }
+//广度优先遍历
+    function traverseBF(node) {
+        //模拟队列，用于广度优先
+        var stack = [];
+        stack.push(node);
+        while (stack.length > 0) {
+            var temp = stack.shift();
+           //按广度优先遍历顺序存放进全局数组内，用于动画展示
+            showQueue.push(temp);
+            for (var i = 0; i < temp.children.length; i++) {
+                if (temp.children[i]) stack.push(temp.children[i]);
+            }
+        }
+    }
+
+/*    function traverseDF(node,nodeList){
         if(node){
             nodeList.push(node);
             for(var i=0;i<node.children.length;i++){
@@ -24,8 +59,6 @@
             }
         }
     }
-
-//广度优先遍历
     function traverseBF(node, nodeList) {;
         if (node) {
             nodeList.push(node);
@@ -33,34 +66,44 @@
             node = nodeList[BFindex++];
             traverseBF(node.firstElementChild, nodeList);
         }
+    }*/
+
+//获取数据
+    function getData() {
+        var aqiData = $('searchText');
+        return trim(aqiData.value);
     }
 
+
 //渲染动画，有文本传入则可执行搜索
-    function traverseRender(nodeList,foundText){
-        var i = 0;
-        var len = nodeList.length;
-        if (nodeList[i].firstChild.nodeValue.replace(/(^\s*)|(\s*$)/g, "") == foundText) {
-            nodeList[i].className = "found";
+    function show(showQueue,foundText){
+        var i  = 0;
+        var len = showQueue.length;
+      if (trim(showQueue[i].firstChild.nodeValue) == foundText) {
+            showQueue[i].className = "found";
             lock = false;
             clearInterval(timer);
         } else {
-            nodeList[i++].className = "active";
+            showQueue[i++].className = "active";
         }
         lock = true;
         timer = setInterval(function(){
             if(i<len){
-                nodeList[i-1].className = "";
-                if(nodeList[i].firstChild.nodeValue.replace(/(^\s*)|(\s*$)/g, "") == foundText){
-                    nodeList[i].className = "found";
+                showQueue[i-1].className = "";
+                //若查找到了，则将色块变色，退出动画
+                if(trim(showQueue[i].firstChild.nodeValue) == foundText){
+                    showQueue[i].className = "found";
+                    alert('已找到');
                     lock = false;
                     clearInterval(timer);
                 }
                 else{
-                    nodeList[i++].className = "active";
+                    showQueue[i++].className = "active";
                 }
             }
             else{
-                nodeList[i-1].className = "";
+                //动画结束，重置全局数组，动画进行标志
+                showQueue[i-1].className = "";
                 lock = false;
                 clearInterval(timer);
             }
@@ -70,24 +113,31 @@
 
 
     function traverse(traverseIndex){
-        var Nodelist = [];
         var foundList = [];
+
         switch(traverseIndex){
-            case 0:traverseDF(rootNode,Nodelist);
+            case 0:traverseDF(rootNode);
                 break;
-            case 1:BFindex = 0;
-                traverseBF(rootNode,Nodelist);
+            case 1:traverseBF(rootNode);
                 break;
-            case 2:var foundText = document.getElementsByTagName("input")[0].value;
-                traverseDF(rootNode,Nodelist);
+            case 2:var foundText =$('searchText').value;
+                if(!foundText){
+                    alert("请输入查询内容");
+                    return ;
+                }
+                traverseDF(rootNode);
                 break;
-            case 3:BFindex = 0;
-                var foundText = document.getElementsByTagName("input")[0].value;
-                traverseBF(rootNode,Nodelist);
+            case 3:
+                var foundText = $('searchText').value;
+                if(!foundText){
+                    alert("请输入查询内容");
+                    return ;
+                }
+                traverseBF(rootNode);
                 break;
         }
-        resetBG();
-        setTimeout(traverseRender(Nodelist,foundText),500);
+
+        setTimeout(show(showQueue,foundText),500);
     }
 
 //绑定按钮事件
@@ -95,6 +145,7 @@
         for(var i=0;i<oBtns.length;i++){
             (function(i){
                 oBtns[i].onclick = function(){
+                    resetBG();
                     if(lock === true){
                         alert("正在遍历中!");
                     }
@@ -108,10 +159,9 @@
 
 // 重置所谓节点样式
     function resetBG(){
-        var nodeList = [];
-        traverseDF(rootNode,nodeList);
-        for(var i=0;i<nodeList.length;i++){
-            nodeList[i].className = "default";
+        var showQueue = [];
+        for(var i=0;i<showQueue.length;i++){
+            showQueue[i].className = "";
         }
     }
 
