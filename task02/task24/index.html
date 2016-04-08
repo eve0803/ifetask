@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ife-task24</title>
+    <style>
+        *{padding: 0;margin: 0;  color: #000;}
+        html, body { width: 100%; }
+        fieldset{ width:800px; margin: 20px auto;padding: 20px; }
+        #btnWrap{ text-align: center;}
+        #btnWrap a{background: brown;padding: 10px 20px;color: #fff; font-size: 14px; margin: 0 10px; cursor: pointer;display:inline-block; text-decoration: none;}
+        #btnWrap a span{color: #fff;}
+        #btnWrap a:hover,  #btnWrap a:active {  background: red;  }
+        li{list-style: none; border-left: 1px solid red;  }
+        i{width: 15px; height: 15px;background: url("thumb-large.png") no-repeat left center; background-size: 15px;display: inline-block; }
+        a{text-decoration: none; color: #000; font-size: 18px; height: 24px; line-height: 24px; display: block;}
+        a:hover{color: red; background: papayawhip;}
+        #ul1{margin: 50px;}
+        ul{position: relative;left: 20px;}
+        .tree-area{}
+        input{padding: 5px; width:200px;}
+        #ul1 ul{display: none;}
+    </style>
+</head>
+<body>
+<fieldset>
+    <legend>树形组件</legend>
+    <div id="btnWrap">
+    <input type="text" id="searchText" placeholder="输入要搜索的文件名">
+        <a href="javascript:;" class="search">搜索</a>
+        <a href="javascript:;" class="rename"><span>重命名</span></a>
+        <a href="javascript:;" class="delfile"><span>删除</span></a>
+        <a href="javascript:;" class="mkdir"><span>新建文件夹</span></a>
+    </div>
+    <div class="files">
+        <ul id="tree">
+            <li id="root" class="node"><a href="javascript:;"><span>+</span>第一级菜单</a>
+                <ul>
+                    <li><a href="javascript:;"><span>+</span>第二级菜单</a>
+                        <ul>
+                            <li><a href="javascript:;"><span>+</span>第三级菜单</a>
+                                <ul>
+                                    <li><a href="javascript:;"><span>+</span>第四级菜单</a>
+                                        <ul>
+                                            <li><a href="javascript:;">第五级菜单</a></li>
+                                            <li><a href="javascript:;">第五级菜单</a></li>
+                                            <li><a href="javascript:;">第五级菜单</a></li>
+                                            <li><a href="javascript:;">第五级菜单</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="javascript:;">第四级菜单</a></li>
+                                    <li><a href="javascript:;">第四级菜单</a></li>
+                                    <li><a href="javascript:;">第四级菜单</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:;">第三级菜单</a></li>
+                            <li><a href="javascript:;">第三级菜单</a></li>
+                            <li><a href="javascript:;">第三级菜单</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:;"><span>+</span>第二级菜单</a>
+                        <ul>
+                            <li><a href="javascript:;"><span>+</span>第三级菜单</a>
+                                <ul>
+                                    <li><a href="javascript:;"><span>+</span>第四级菜单</a>
+                                        <ul>
+                                            <li><a href="javascript:;">第五级菜单</a></li>
+                                            <li><a href="javascript:;">第五级菜单</a></li>
+                                            <li><a href="javascript:;">第五级菜单</a></li>
+                                            <li><a href="javascript:;">第五级菜单</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="javascript:;">第四级菜单</a></li>
+                                    <li><a href="javascript:;">第四级菜单</a></li>
+                                    <li><a href="javascript:;">第四级菜单</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:;">第三级菜单</a></li>
+                            <li><a href="javascript:;">第三级菜单</a></li>
+                            <li><a href="javascript:;">第三级菜单</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</fieldset>
+<script src="file.js"></script>
+<script src="task.js"></script>
+<script src="data.js"></script>
+</body>
+</html>
