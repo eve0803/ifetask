@@ -18,32 +18,35 @@ function addEvent(ele, type, func) {
         input_Num = $('myInput'),
         showResult = $('showDiv'),
         apiData = [],
-          mySearch = $('mySearch');
+        searchbtn = $('search'),
+        mySearch = $('mySearch');
+    var matchnum=[]
     var eventUtil = {
-        getInput:function(num){
-
-            var reg = new RegExp("[^\n\r\s 、,，0-9A-Za-z\u4e00-\u9fa5]");
-            var regBlank = new RegExp("^[\n\r\s ,，、]*$");
-            if(reg.test(num)){
+        getInput:function(){
+        var input_word=input_Num.value;
+            var reg = /[^\n\r\s 、,，0-9A-Za-z\u4e00-\u9fa5]/;
+            var regBlank =/^[\n\r\s ,，、]*$/;
+            if(reg.test(input_word)){
                 alert("输入的内容只能包含数字、中文、英文");
                 return false;
             }
-            else if(regBlank.test(num)){
+            else if(regBlank.test(input_word)){
                 alert("无法输入空数据");
                 return false;
             }
-            return input_word;
+
+            return input_word.trim();
         },
         leftIn: function() {
             var inputText = eventUtil.getInput();
             if(inputText === false) return;
-            apiData.unshift(inputText);
+            apiData=inputText.split(/\s|;|；|，|,/g).concat(apiData);
             eventUtil.renderChart();
         },
         rightIn: function() {
             var inputText = eventUtil.getInput();
             if(inputText === false) return;
-            apiData.push(inputText);
+            apiData=apiData.concat(inputText.split(/\s|;|；|，|,/g));
             eventUtil.renderChart();
         },
         leftOut: function() {
@@ -68,24 +71,40 @@ function addEvent(ele, type, func) {
         },
         renderChart: function() {
             var input_word = input_Num.value;
-            var textArr = input_word.split(/[\s\r\n、,，]+/);
-            showResult.innerHTML = "";
+            showResult.innerHTML="";
             input_Num.value="";
             for(var i = 0 ; i < apiData.length ; i++){
                 showResult.innerHTML += '<div>'+ apiData[i] +'</div>';
-
+            }
+          //下面是用于标记出查找到元素的判断逻辑
+            if(matchnum.length>0){
+                //获得所有li节点以备操作
+                var lipack=document.getElementsByTagName("li");
+                for(i=0;i<=matchnum.length-1;i++){
+                    lipack[matchnum[i]].setAttribute("class","located")
+                }
+                matchnum=[];
             }
             return apiData;
         }
     };
-
+    //查询内容
+    function searchDivContent(text) {
+        for (var i = 0; i < showDiv.childNodes.length; i++) {
+            if (showDiv.childNodes[i].innerHTML.indexOf(text) != -1) {
+                showDiv.childNodes[i].style.color = "#ffffff";
+                showDiv.childNodes[i].style.background = "blue";
+            }
+        }
+    }
 
     addEvent(insert_left, 'click', eventUtil.leftIn);
     addEvent(insert_right, 'click', eventUtil.rightIn);
     addEvent(delete_left, 'click', eventUtil.leftOut);
     addEvent(delete_right, 'click', eventUtil.rightOut);
-    addEvent(mySearch, 'click',function(){
-        eventUtil.bubbleSort(apiData);
+    addEvent(searchbtn, 'click',function(){
+        var inputValue = mySearch.value;
+        searchDivContent(inputValue);
     });
 
     addEvent(showResult, 'click', function(e) {
