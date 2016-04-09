@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ife-task23</title>
+    <style>
+        *{padding: 0;margin: 0;  color: #000;}
+        html, body { width: 100%; }
+        #one{margin: 0 auto;  width: 80%;   height: 300px; }
+        #one,#one div{  display: flex;display: -webkit-flex;  justify-content: space-around;  align-items: center;  border:1px solid #000;  box-sizing: border-box;   }
+        div{background-color: #fff; }
+        input{width:200px;height: 30px; padding: 0 10px;}
+        #one div{  margin: 8px;padding:8px;  height:90%; }
+        #btnWrap{ width: 100%;text-align: center;margin:50px auto; overflow: hidden;}
+        button{background: brown;padding: 15px 25px;border: 0;color: #fff; font-size: 14px; margin: 0 10px; cursor: pointer}
+        button:hover, button:active {  background: red;  }
+        .default{
+            background-color: #fff;
+            color: black;
+        }
+       .active{
+            background-color: blue;
+            color: #fff;
+        }
+        .found {
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="btnWrap">
+    <button>深度优先遍历</button><button>广度优先遍历</button>
+    <input type="text" id="searchText" placeholder="输入要查找的单词">
+    <button>深度优先搜索</button><button>广度优先搜索</button>
+</div>
+<div id="one"  >
+    Super
+    <div>
+        Cat
+        <div >
+            Apple
+            <div>Pear</div>
+            <div>Pig</div>
+            <div>Cola</div>
+            <div>Soccer</div>
+        </div>
+        <div>Phone</div>
+        <div>
+            <div>Book</div>
+            <div>School</div>
+        </div>
+    </div>
+    <div>
+        Note
+        <div>
+            Human
+            <div>Code</div>
+            <div>Operate</div>
+            <div>Man</div>
+        </div>
+        <div>
+            Program
+            <div>
+                Bement
+                <div>Cat</div>
+            </div>
+            <div>Glass</div>
+        </div>
+    </div>
+    <div>Fish</div>
+</div>
+<script src="task.js"></script>
+</body>
+</html>

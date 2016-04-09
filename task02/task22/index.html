@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ife-task22</title>
+    <style>
+        *{padding: 0;margin: 0; }
+        html, body { width: 100%; }
+        .one{margin: 0 auto;  width: 800px;  height: 300px; }
+      .one,.one div{  display: flex;display: -webkit-flex;  justify-content: space-around;  align-items: center;  border:1px solid #000;  box-sizing: border-box;  background-color: #fff;  }
+      div{background-color: #fff;}
+       .one div{  margin: 0px 15px;flex: 1;  height:90%; }
+       #btnWrap{ width: 100%;text-align: center;margin:50px auto; overflow: hidden;}
+        button{background: brown;padding: 15px 25px;border: 0;color: #fff; font-size: 14px; margin: 0 10px; cursor: pointer}
+        button:hover, button:active {  background: red;  }
+    </style>
+</head>
+<body>
+<div id="btnWrap">
+    <button>前序遍历</button><button>中序遍历</button><button>后序遍历</button>
+</div>
+<div id="one" class="one">
+    <div class="two">
+        <div class="three">
+            <div class="four"></div>
+            <div class="four"></div>
+        </div>
+        <div class="three">
+            <div class="four"></div>
+            <div class="four"></div>
+        </div>
+    </div>
+    <div class="two">
+        <div class="three">
+            <div class="four"></div>
+            <div class="four"></div>
+        </div>
+        <div class="three">
+            <div class="four"></div>
+            <div class="four"></div>
+        </div>
+    </div>
+</div>
+
+<script src="task.js"></script>
+</body>
+</html>

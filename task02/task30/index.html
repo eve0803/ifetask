@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ife-task30</title>
+    <style>
+        body {
+            font-size:16px;
+            font-family: 'Microsoft yahei';
+        }
+        .msg {
+            color: #a8a8a8; display: none;;
+        }
+
+        .error > input{
+            border-color: #e60000
+        }
+        .error > .msg {
+            color: #e60000;
+        }
+        .right  > input{
+            border-color: #55b53a;
+        }
+        .right > .msg {
+            color: #55b53a;
+        }
+        #form {
+            width: 600px;
+            margin:100px auto;
+        }
+        .box{ width:100%; overflow: hidden;display: table;  }
+        .box label  {
+             width:80px; display: table-cell;
+            line-height:80px; padding-right:20px; text-align: right;
+            font-weight: 700;
+        }
+        form > button {
+            display: inline-block;
+            width: 100px;
+            height: 60px;
+            float: right;
+            line-height: 60px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff; border: 0;;
+            background: #2f79ba; cursor: pointer;
+        }
+        .box input {
+            height:40px;
+            line-height:40px;
+            width: 500px;
+            border: 2px solid #a8a8a8;
+            font-size: 25px;
+            border-radius: 5px;
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+<form id="form">
+<div  class="box">
+    <label>名称</label>
+    <input id="myName"  name="myName" type="text" >
+    <p class="msg" id="nameMsg">必填，长度为4~16个字符</p>
+</div>
+<div  class="box">
+    <label>密码</label>
+    <input id="password"  name="password" type="password" >
+    <p class="msg" id="mycodeMsg">必填，长度为4~16个字符</p>
+</div>
+<div  class="box">
+    <label>密码确认</label>
+    <input id="repassword"  name="repassword" type="password" >
+    <p class="msg" id="reCodeMsg">必填，长度为4~16个字符</p>
+</div>
+<div  class="box">
+    <label>邮箱</label>
+    <input id="email"  name="email" type="text" >
+    <p class="msg" id="emailMsg">必填，长度为4~16个字符</p>
+</div>
+<div  class="box">
+    <label>手机</label>
+    <input id="tel"  name="tel" type="tel" >
+    <p class="msg" id="telMsg">必填，长度为4~16个字符</p>
+</div>
+<button id="validator">验证</button>
+</form>
+<script src="task.js"></script>
+</body>
+</html>
