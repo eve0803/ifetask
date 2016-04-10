@@ -8,22 +8,7 @@
             font-size:16px;
             font-family: 'Microsoft yahei';
         }
-        .msg {
-            color: #a8a8a8; display: none;;
-        }
 
-        .error > input{
-            border-color: #e60000
-        }
-        .error > .msg {
-            color: #e60000;
-        }
-        .right  > input{
-            border-color: #55b53a;
-        }
-        .right > .msg {
-            color: #55b53a;
-        }
         #form {
             width: 600px;
             margin:100px auto;
@@ -55,12 +40,27 @@
             border-radius: 5px;
             outline: none;
         }
+        .msg {
+            color: #a8a8a8; display: none;;
+        }
 
+        .error > input{
+            border-color: #e60000
+        }
+        .error > .msg {
+            color: #e60000;
+        }
+        .right  > input{
+            border-color: #55b53a;
+        }
+        .right > .msg {
+            color: #55b53a;
+        }
     </style>
 </head>
 <body>
 <form id="form">
-<div  class="box">
+<div id="NameBox"  class="box">
     <label>名称</label>
     <input id="myName"  name="myName" type="text" >
     <p class="msg" id="nameMsg">必填，长度为4~16个字符</p>
