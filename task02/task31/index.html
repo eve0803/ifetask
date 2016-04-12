@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ife-task31</title>
+    <style>
+        body {
+            font-size:16px;
+            font-family: 'Microsoft yahei';
+        }
+        form{
+            width:500px; text-align: center;
+            margin:100px auto;
+        }
+ #selec{ display: none;}
+        #radio input{
+            margin:40px 20px;
+        }
+
+        #selec select{
+
+            width:150px;
+            height:35px;
+            border-radius: 5px;
+        }
+
+        #selec #area{
+            margin-left: 30px;
+        }
+        #work{
+
+            display: none;
+        }
+        #work input{
+            width:300px;
+            height:30px;
+            border: 1px solid #CDCDCD;
+            border-radius: 5px;
+            font-size: 25px;
+        }
+
+
+    </style>
+</head>
+<body>
+<form mothod="post" action="">
+    <div id="radio">
+        <input type="radio" name="radio" id="inschool" />在校生
+        <input type="radio" name="radio" id="outschool" />非在校生
+    </div>
+    <div id="selec">
+        <label for="inschool">学校</label>
+        <select id="area">
+            <option>北京</option>
+            <option>上海</option>
+            <option>杭州</option>
+        </select>
+        <select id="school">
+            <option>北京大学</option>
+        </select>
+    </div>
+    <div id="work">
+        工作单位
+        <input type="text" />
+    </div>
+
+</form>
+
+<script src="task.js"></script>
+</body>
+</html>

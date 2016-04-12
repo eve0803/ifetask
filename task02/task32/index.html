@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ife-task32</title>
+    <style>
+        body {
+            font-size:16px;
+            font-family: 'Microsoft yahei';
+        }
+        form{
+            width:500px; text-align: center;
+            margin:100px auto;
+        }
+ #selec{ display: none;}
+        #radio input{
+            margin:40px 20px;
+        }
+
+        #selec select{
+
+            width:150px;
+            height:35px;
+            border-radius: 5px;
+        }
+
+        #selec #area{
+            margin-left: 30px;
+        }
+        #work{
+
+            display: none;
+        }
+        #work input{
+            width:300px;
+            height:30px;
+            border: 1px solid #CDCDCD;
+            border-radius: 5px;
+            font-size: 25px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="autoForm">
+    <div class="header">表单生成器</div>
+    <input type="checkbox" name="formList" id="nameList"><label for="nameList">名称</label>
+    <input type="checkbox" name="formList" id="passwordList"><label for="passwordList">密码</label>
+    <input type="checkbox" name="formList" id="emailList"><label for="emailList">邮箱</label>
+    <input type="checkbox" name="formList" id="phoneList"><label for="phoneList">手机</label>
+    <div class="autoStyle">
+        <input type="radio" name="style" id="style1" value="style1"><label for="style1">样式一</label>
+        <input type="radio" name="style" id="style2" value="style2"><label for="style2">样式二</label>
+    </div>
+    <input type="button" value="生成表单" id="causeForm">
+</div>
+
+
+<script src="task.js"></script>
+</body>
+</html>

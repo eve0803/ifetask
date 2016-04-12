@@ -54,15 +54,17 @@
         return str.replace(/(^\s*)|(\s*$)/g, '');
     }
 
-
+//下一个兄弟节点
     function getNext( obj ){
         if( !obj || !obj.nextSibling ) return null;
         return obj.nextSibling.nodeType === 1 ? obj.nextSibling : getNext( obj.nextSibling );
-    }
+        }
+
 
    //搜索节点
     function searchFile(){
-        alert(1);
+        var searchText=document.getElementById('searchText');
+
     }
     //重命名节点
     function reName(){
@@ -76,6 +78,7 @@
     function addFile(){
         alert(4);
     }
+
    //展示收缩
     function flod(){
         var tree =$('tree');
@@ -83,17 +86,31 @@
         var aA =  tree.getElementsByTagName('a');
         for(var i=0,len=aA.length;i<len;i++){
             aA[i].onclick=function(){
-
-                var oUl = getNext( this );
-                var siblingsUl = this.parentNode.parentNode.getElementsByTagName('ul');
-                if(  siblingsUl[this].style.display == 'block' ){
-                    siblingsUl[this].style.display = 'none';
-                }else{
-                    for(var i=0; i<siblingsUl.length; i++){
-                        siblingsUl[i].style.display = 'none';
+                var oUl=getNext(this); //a的下一个兄弟节点，即要展开的下一级
+                if( oUl ){
+                    if( oUl.style.display == 'none' ){
+                        this.className='active';
+                        oUl.style.display = 'block';
+                    }else{
+                        this.className='';
+                        oUl.style.display = 'none';
                     }
-                    siblingsUl[this].style.display = 'block';
+                };
+                var oSpan = this.getElementsByTagName('span')[0];
+                // 查找第一个button
+                var liUl = this.parentNode.getElementsByTagName('ul')[0];
+                // 有没有展开菜单
+                var hasul = liUl ? true : false;
+                var aSpan = this.parentNode.parentNode.getElementsByTagName('span');
+                if(oSpan.innerHTML=='-'&&hasul){
+                   oSpan.innerHTML = '+';
                 }
+                else{
+                    oSpan.innerHTML = '-';
+                }
+
+
+
             }
         }
 
@@ -106,9 +123,54 @@
     addEvent(delfile,'click', delFile);
     addEvent(mkdir,'click', addFile);
     function init(){
+       // creat();
         flod();
     }
     init();
 
 })();
+//绘制节点
+function creat(point,initName,id){
+
+    //创建元素
+    var ul=document.createElement("ul");
+    var li=document.createElement("li");
+    var div=document.createElement("div");
+    var div1=document.createElement("span");
+    var div2=document.createElement("div");
+    var add=document.createElement("i");
+    var del=document.createElement("i");
+    var ren=document.createElement("i");
+    var show=document.createElement("i");
+    //添加样式
+    div.setAttribute('class','title');
+    div2.setAttribute('class','btnGroup');
+    show.setAttribute('class','iconfont');
+    add.innerHTML='&#xe600添加';
+    if(id){
+        add.setAttribute('id',id);
+    }
+    add.setAttribute('onclick','onAddItem(this)');
+    add.setAttribute('class','iconfont');
+    del.innerHTML='&#xe608删除';
+    del.setAttribute('onclick','onDelItem(this)');
+    del.setAttribute('class','iconfont');
+    ren.innerHTML='&#xe604重命名';
+    ren.setAttribute('onclick','onRename(this)');
+    ren.setAttribute('class','iconfont');
+    //添加分支
+    div2.appendChild(add);
+    div2.appendChild(del);
+    div2.appendChild(ren);
+    div1.innerHTML=name||initName||'未命名';
+    div1.setAttribute('onclick','onIsShow(this,1)');
+    div.appendChild(show);
+    div.appendChild(div1);
+    div.appendChild(div2);
+    li.appendChild(div);
+    li.appendChild(ul);
+    node.appendChild(li);
+
+}
+
 
