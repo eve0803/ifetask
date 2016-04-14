@@ -3,7 +3,8 @@
  */
 
 (function(){
-    var hobbyBtn=$('hobby-btn'),
+
+      var hobbyBtn=$('hobby-btn'),
         tagInput=$('tag-input'),
         tagContainer=$('tag-container'),
         hobbyInput=$('hobby-input'),

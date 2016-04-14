@@ -1,0 +1,124 @@
+<html>
+<head>
+    <title>SortTable2</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+        /**
+         * 比较函数生成器
+
+         */
+        function  generateCompareTRs(iCol, sDataType) {
+            return   function  compareTRs(oTR1, oTR2) {
+                vValue1 = convert(oTR1.cells[iCol].firstChild.nodeValue, sDataType);
+                vValue2 = convert(oTR2.cells[iCol].firstChild.nodeValue, sDataType);
+                if  (vValue1 < vValue2) {
+                    return  -1;
+                }  else   if  (vValue1 > vValue2) {
+                    return  1;
+                }  else  {
+                    return  0;
+                }
+            };
+        }
+        /**
+         * 处理排序的字段类型
+
+         */
+        function  convert(sValue, sDataType) {
+            switch  (sDataType) {
+                case   "int" :
+                    return  parseInt(sValue);
+                case   "float" :
+                    return  parseFloat(sValue);
+                case   "date" :
+                    return   new  Date(Date.parse(sValue));
+                default :
+                    return  sValue.toString();
+            }
+        }
+
+        /**
+         * 通过表头对表列进行排序
+         *
+         * @param sTableID
+         *            要处理的表ID<table id=''>
+         * @param iCol
+         *            字段列id eg: 0 1 2 3 ...
+         * @param sDataType
+         *            该字段数据类型 int,float,date 缺省情况下当字符串处理
+         */
+        function  sortTable(sTableID, iCol, sDataType) {
+            var  oTable = document.getElementById(sTableID);
+            var  oTBody = oTable.tBodies[0];
+            var  colDataRows = oTBody.rows;
+            var  aTRs =  new  Array;
+            for  (  var  i = 0; i < colDataRows.length; i++) {
+                aTRs[i] = colDataRows[i];
+            }
+            if  (oTable.sortCol == iCol) {
+                aTRs.reverse();
+            }  else  {
+                aTRs.sort(generateCompareTRs(iCol, sDataType));
+            }
+            var  oFragment = document.createDocumentFragment();
+            for  (  var  j = 0; j < aTRs.length; j++) {
+                oFragment.appendChild(aTRs[j]);
+            }
+            oTBody.appendChild(oFragment);
+            oTable.sortCol = iCol;
+        }
+    </script>
+</head>
+<body>
+<form name="f1" id="f1" action="" method="post">
+    <table border="1" id="tblSort" sortCol="-1">
+        <thead>
+        <tr>
+            <th onClick="sortTable('tblSort',0);" style="cursor:pointer">Last Name</th>
+            <th onClick="sortTable('tblSort',1)" style="cursor:pointer">First Name</th>
+            <th onClick="sortTable('tblSort',2,'date')" style="cursor:pointer">Birthday</th>
+            <th onClick="sortTable('tblSort',3,'int')" style="cursor:pointer">Silbings</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Simth</td>
+            <td>John</td>
+            <td>7/12/1978</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Johnson</td>
+            <td>Betty</td>
+            <td>5/12/1965</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Henderson</td>
+            <td>Nathan</td>
+            <td>10/15/1977</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>Willianms</td>
+            <td>James</td>
+            <td>2/25/1949</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Gilliam</td>
+            <td>Michael</td>
+            <td>7/8/1980</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>Walker</td>
+            <td>Matthew</td>
+            <td>6/18/1981</td>
+            <td>3</td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

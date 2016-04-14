@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        table {
+            border: 1px solid #ccc;
+            width: 1000px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border-spacing: 0px;
+            text-align: center;
+        }
+        th {
+
+        }
+        tr {
+            border: 2px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<table class="tab">
+    <tr><th>name</th><th>age</th></tr>
+    <tbody class="tbody">
+    <tr><td>name1</td><td>12</td></tr>
+    <tr><td>name2</td><td>15</td></tr>
+    <tr><td>name3</td><td>1</td></tr>
+    <tr><td>name4</td><td>16</td></tr>
+    <tr><td>name5</td><td>5</td></tr>
+    </tbody>
+</table>
+<p class="display"></p>
+<script src="http://suiyidian.cn/texiao/tab/jquery-1.5.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+        var $tr = $(".tbody").find('tr');
+        var array =[];//[{index:0,age:12},{index:1,age:15}~~~]
+        $tr.each(function(){
+            var obj ={};
+            obj["index"] = $(this).index();
+            obj["age"] = $(this).children('td').last().html();
+            obj["name"] = $(this).children('td').first().html();
+            array.push(obj);
+        });
+
+        for(var i =0 ;i<array.length;i++){
+            console.log(array[i]);
+        }
+        $.each(array,function(i,elem){
+            console.log(array[i].age);
+
+        });
+        //排序
+        array.sort(sortBy);
+        function sortBy(a,b){
+            return a.age-b.age;
+        }
+        for(var i =0 ;i<array.length;i++){
+            console.log(array[i]);
+        }
+        //删除旧数组生成新数组
+        $('.tbody').empty().append($tr);
+        for(var i =0 ;i<array.length;i++){
+            $('.tbody').append($tr.eq(array[i].index));
+        }
+        /*
+         * 码部分最主要的还是js部分，我的主要思路是通过建立一个数组对象，将每一列的列数和age的大小放进去，然后通过对age的排序实现对这个对象数组的排序，最后再删除旧的表格生成新的表格。
+         * */
+    });
+</script>
+</body>
+</html>

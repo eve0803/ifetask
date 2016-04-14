@@ -87,8 +87,12 @@
         for(var i=0,len=aA.length;i<len;i++){
             aA[i].onclick=function(){
                 var oUl=getNext(this); //a的下一个兄弟节点，即要展开的下一级
+                var siblingsUl = this.parentNode.parentNode.getElementsByTagName('ul');
                 if( oUl ){
                     if( oUl.style.display == 'none' ){
+                        for(var i=0; i<siblingsUl.length; i++){
+                            siblingsUl[i].className = '';
+                        }
                         this.className='active';
                         oUl.style.display = 'block';
                     }else{

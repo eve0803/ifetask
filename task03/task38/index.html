@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <style>
+        *{ margin:0; padding:0;}
+        h3{padding: 50px 0 }
+        #tableWrap{  text-align: center; }
+        #tableWrap table{width:800px; margin: 0px auto; table-layout: fixed;border-collapse: collapse;
+            border-spacing: 0; }
+        #tableWrap table th{  background: grey; color: #000;padding: 15px;border: 1px solid #000;}
+        #tableWrap table td{ border: 1px solid #000;padding: 15px;}
+        #tableWrap table span{ display: inline-block;cursor: pointer; margin: 0 0px;}
+        #tableWrap table span.down{
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 15px solid black;
+            font-size: 0;
+            line-height: 0;}
+        #tableWrap table span.up { margin-left: 5px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 15px solid black;
+            font-size: 0;
+            line-height: 0;
+        }
+        #tableWrap table th:hover{
+            background: red;color: #fff;
+        }
+        #tableWrap table span.down:hover {
+            border-top: 15px solid yellow;
+        }
+
+        #tableWrap table span.up:hover {
+            border-bottom: 15px solid yellow;
+        }
+        #tableWrap table tr:hover{  background:#e1e1e1; }
+
+    </style>
+    <!---->
+</head>
+
+<body>
+<div id="tableWrap">
+    <h3> 点击首行各单元进行排序(默认按总分降序排序)</h3>
+<table id="table">
+    <tr class="top">
+        <th>姓名</th>
+        <th id="chinese">语文<span class="up"></span><span class="down"></span></th>
+        <th id="math">数学<span class="up"></span><span class="down"></span></th>
+        <th id="english">英语<span class="up"></span><span class="down"></span></th>
+        <th id="total">总分<span class="up"></span><span class="down"></span></th>
+    </tr>
+    <tr>
+        <td>小明</td>
+        <td>50</td>
+        <td>60</td>
+        <td>99</td>
+        <td>60</td>
+    </tr>
+    <tr>
+        <td>小红</td>
+        <td>90</td>
+        <td>95</td>
+        <td>77</td>
+        <td>62</td>
+    </tr>
+    <tr>
+        <td>小刚</td>
+        <td>80</td>
+        <td>90</td>
+        <td>68</td>
+        <td>63</td>
+    </tr>
+</table>
+
+</div>
+<script src="task.js"></script>
+</body>
+</html>
