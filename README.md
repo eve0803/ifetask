@@ -3,6 +3,6 @@
 
 2016春天百度前端学院的任务
 =======
-任务列表请访问
-http://eve0803.github.io/ifetask/
+##<a href='http://eve0803.github.io/ifetask/'>任务列表请访问</a><br>
+##<a href='https://segmentfault.com/u/eve0803'>学习笔记博客：</a><br>
 

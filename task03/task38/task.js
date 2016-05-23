@@ -1,149 +1,82 @@
 /**
- * Created by guolimin on 2016-04-14.
+ * 比较函数生成器
+
  */
 (function(){
-  /* var  tableWrap=document.getElementById("tableWrap"),
-        oTable=tableWrap.getElementsByTagName("tr"),
-        oChinese=document.getElementById("chinese"),
-        oMath=document.getElementById("math"),
-        oEng=document.getElementById("english"),
-        oTotal=document.getElementById("total");*/
-
-    //升序
-
-
-
-    //降序
-
 
 })();
+升序
+function  generateCompareTRs(iCol, sDataType) {
+    return   function  compareTRs(oTR1, oTR2) {
+        vValue1 = convert(oTR1.cells[iCol].firstChild.nodeValue, sDataType);
+        vValue2 = convert(oTR2.cells[iCol].firstChild.nodeValue, sDataType);
+        if  (vValue1 < vValue2) {
+            return  -1;
+        }  else   if  (vValue1 > vValue2) {
+            return  1;
+        }  else  {
+            return  0;
+        }
+    };
+}
 
+//降序
+function generateCompareTRs1(iCol,sDataType){
+    return   function compareTRs(oTR1,oTR2){
+        var vValue1=convert(oTR1.cells[iCol].firstChild.nodeValue,sDataType);
+        var vValue2=convert(oTR2.cells[iCol].firstChild.nodeValue,sDataType);
+        if(vValue1>vValue2){
+            return -1;
+        }
+        else if(vValue1<vValue2){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    };
+};
+//数据类型转换函数
+function  convert(sValue, sDataType) {
+    switch  (sDataType) {
+        case   "int" :
+            return  parseInt(sValue);
+        case   "float" :
+            return  parseFloat(sValue);
+        case   "date" :
+            return   new  Date(Date.parse(sValue));
+        default :
+            return  sValue.toString();
+    }
+}
 
-var tableSort = function(){
-    this.initialize.apply(this,arguments);
-}
-tableSort.prototype = {
-    initialize : function(tableId,clickRow,startRow,endRow,classUp,classDown,selectClass){
-        this.Table = document.getElementById(tableId);
-        this.rows = this.Table.rows;//所有行
-        this.Tags = this.rows[clickRow-1].cells;//标签td
-        this.up = classUp;
-        this.down = classDown;
-        this.startRow = startRow;
-        this.selectClass = selectClass;
-        this.endRow = (endRow == 999? this.rows.length : endRow);
-        this.T2Arr = this._td2Array();//受影响的td二维数组
-        this.setShow();
-    },
-    //标签切换
-    setShow:function(){
-        var defaultClass = this.Tags[0].className;
-        for(var Tag ,i=0;Tag = this.Tags[i];i++){
-            Tag.index = i;
-            addEventListener(Tag ,'click', Bind(Tag,statu));
-        }
-        var _this =this;
-        var turn = 0;
-        function statu(){
-            for(var i=0;i<_this.Tags.length;i++){
-                _this.Tags[i].className = defaultClass;
-            }
-            if(turn==0){
-                addClass(this,_this.down)
-                _this.startArray(0,this.index);
-                turn=1;
-            }else{
-                addClass(this,_this.up)
-                _this.startArray(1,this.index);
-                turn=0;
-            }
-        }
-    },
-    //选中列样式
-    colClassSet:function(num,cla){
-        //得到关联到的td
-        for(var i= (this.startRow-1);i<(this.endRow);i++){
-            for(var n=0;n<this.rows[i].cells.length;n++){
-                removeClass(this.rows[i].cells[n],cla);
-            }
-            addClass(this.rows[i].cells[num],cla);
-        }
-    },
-    //开始排序  num 根据第几列排序  aord 逆序还是顺序
-    startArray:function(aord,num){
-        var afterSort = this.sortMethod(this.T2Arr,aord,num);//排序后的二维数组传到排序方法中去
-        this.array2Td(num,afterSort);//输出
-    },
-    //将受影响的行和列转换成二维数组
-    _td2Array:function(){
-        var arr=[];
-        for(var i=(this.startRow-1),l=0;i<(this.endRow);i++,l++){
-            arr[l]=[];
-            for(var n=0;n<this.rows[i].cells.length;n++){
-                arr[l].push(this.rows[i].cells[n].innerHTML);
-            }
-        }
-        return arr;
-    },
-    //根据排序后的二维数组来输出相应的行和列的 innerHTML
-    array2Td:function(num,arr){
-        this.colClassSet(num,this.selectClass);
-        for(var i= (this.startRow-1),l=0;i<(this.endRow);i++,l++){
-            for(var n=0;n<this.Tags.length;n++){
-                this.rows[i].cells[n].innerHTML = arr[l][n];
-            }
-        }
-    },
-    //传进来一个二维数组，根据二维数组的子项中的w项排序，再返回排序后的二维数组
-    sortMethod:function(arr,aord,w){
-        arr.sort(function(a,b){
-            x = killHTML(a[w]);
-            y = killHTML(b[w]);
-            x = x.replace(/,/g,'');
-            y = y.replace(/,/g,'');
-            switch (isNaN(x)){
-                case false:
-                    return Number(x) - Number(y);
-                    break;
-                case true:
-                    return x.localeCompare(y);
-                    break;
-            }
-        });
-        arr = aord==0?arr:arr.reverse();
-        return arr;
+/**
+ * 通过表头对表列进行排序
+ *
+ * @param sTableID
+ *            要处理的表ID<table id=''>
+ * @param iCol
+ *            字段列id eg: 0 1 2 3 ...
+ * @param sDataType
+ *            该字段数据类型 int,float,date 缺省情况下当字符串处理
+ */
+function  sortTable(sTableID, iCol, sDataType) {
+    var  oTable = document.getElementById(sTableID);//获取表格的ID
+    var  oTBody = oTable.tBodies[0]; //获取表格的tbody
+    var  colDataRows = oTBody.rows; //获取tbody里的所有行的引用
+    var  aTRs =  new  Array;//定义aTRs数组用于存放tbody里的行
+    for  (  var  i = 0; i < colDataRows.length; i++) {/依次把所有行放如aTRs数组
+        aTRs[i] = colDataRows[i];
     }
-}
-function addEventListener(o,type,fn){
-    if(o.attachEvent){o.attachEvent('on'+type,fn)}
-    else if(o.addEventListener){o.addEventListener(type,fn,false)}
-    else{o['on'+type] = fn;}
-}
-function hasClass(element, className) {
-    var reg = new RegExp('(\\s|^)'+className+'(\\s|$)');
-    return element.className.match(reg);
-}
-function addClass(element, className) {
-    if (!this.hasClass(element, className))
-    {
-        element.className += " "+className;
+    if  (oTable.sortCol == iCol) {//非首次排序
+        aTRs.reverse();//首次排序
+    }  else  {
+        aTRs.sort(generateCompareTRs(iCol, sDataType));
     }
-}
-function removeClass(element, className) {
-    if (hasClass(element, className)) {
-        var reg = new RegExp('(\\s|^)'+className+'(\\s|$)');
-        element.className = element.className.replace(reg,' ');
+    var  oFragment = document.createDocumentFragment();
+    for  (  var  j = 0; j < aTRs.length; j++) {
+        oFragment.appendChild(aTRs[j]);
     }
+    oTBody.appendChild(oFragment);
+    oTable.sortCol = iCol;
 }
-var Bind = function(object, fun) {
-    return function() {
-        return fun.apply(object, arguments);
-    }
-}
-//去掉所有的html标记
-function killHTML(str){
-    return str.replace(/<[^>]+>/g,"");
-}
-//tableid  第几行是标签行，从第几行开始排序，第几行结束排序(999表示最后) 升序标签样式，降序标签样式  选中列样式
-//注意标签行的class应该是一致的
-var ex1 = new tableSort('table',1,2,999,'up','down','hov');

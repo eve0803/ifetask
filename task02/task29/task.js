@@ -19,8 +19,9 @@
     }
     function getLength(str){
             // \x00-xff代表单字节字符。
-            return str.replace(/[^\x00-\xff]/g, "xx").length;
+            return str.replace(/[^\x00-\xff]/g, "xx").length;// 匹配双字节字符（一般就像汉字
    }
+
    //获取元素
     var oName = $('myName');
     var validator =$('validator');

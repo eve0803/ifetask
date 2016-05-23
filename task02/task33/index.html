@@ -10,10 +10,11 @@
             font-family: 'Microsoft Yahei';
             font-size:16px;
         }
+
         section{ position: relative;}
         table{
             /*绝对宽度*/
-
+            table-layout: fixed;
             width: 560px;
             border-collapse: collapse;
         }
@@ -29,7 +30,7 @@
         }
         #chess{ position: absolute; z-index: 2; top:51px;left:51px;
             height:35px;
-            width: 50px;
+            width:50px;
             background: #00aaaa;
             border-top:15px solid #bb66bb;
         }
@@ -62,19 +63,19 @@
 <body>
 <section >
     <div id="tableWrap"></div>
-    <div id="chess" ></div>
+
+
 </section>
 
-<div class="opratepart">
-    <input type="button" value="go">
+<div id="opratepart" class="opratepart">
+    <input type="button" value="go" onclick="">
     <input type="button" value="left">
     <input type="button" value="right">
     <input type="button" value="back">
     <br>
-    <input type="text" >
-    <input type="button" value="confirm">
+    <input type="text" id="command">
+    <input type="button" id="confirm" value="confirm">
 </div>
-
-<script src="task.js"></script>
+<script src="task2.js"></script>
 </body>
 </html>

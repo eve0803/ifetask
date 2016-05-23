@@ -2,79 +2,70 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>ife-task30</title>
+    <title>ife-task31</title>
     <style>
         body {
             font-size:16px;
             font-family: 'Microsoft yahei';
         }
-
-        #form {
-            width: 600px;
+        form{
+            width:500px; text-align: center;
             margin:100px auto;
         }
-        .box{ width:100%; overflow: hidden;display: table;  }
-        .box label  {
-             width:80px; display: table-cell;
-            line-height:80px; padding-right:20px; text-align: right;
-            font-weight: 700;
+        #selec{ display: none;}
+        #radio input{
+            margin:40px 20px;
         }
-        form > button {
-            display: inline-block;
-            width: 100px;
-            height: 60px;
-            float: right;
-            line-height: 60px;
+
+        #selec select{
+
+            width:150px;
+            height:35px;
             border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            color: #fff; border: 0;;
-            background: #2f79ba; cursor: pointer;
         }
-        .box input {
-            height:40px;
-            line-height:40px;
-            width: 500px;
-            border: 2px solid #a8a8a8;
+
+        #selec #area{
+            margin-left: 30px;
+        }
+        #work{
+
+            display: none;
+        }
+        #work input{
+            width:300px;
+            height:30px;
+            border: 1px solid #CDCDCD;
+            border-radius: 5px;
             font-size: 25px;
-            border-radius: 5px;
-            outline: none;
         }
-        .msg {
-            color: #a8a8a8; display: none;;
-        }
+
 
     </style>
 </head>
 <body>
-<form id="form">
-<div   class="box">
-    <label>名称</label>
-    <input id="myName"  name="myName" type="text" >
-    <p class="msg" id="nameMsg">必填，长度为4~16个字符</p>
-</div>
-<div   class="box">
-    <label>密码</label>
-    <input id="pwd"  name="password" type="password" >
-    <p class="msg" id="pwdMsg">必填，长度为4~16个字符</p>
-</div>
-<div  class="box">
-    <label>密码确认</label>
-    <input id="repwd"  name="repassword" type="password" >
-    <p class="msg" id="repwdMsg">必填，长度为4~16个字符</p>
-</div>
-<div  class="box">
-    <label>邮箱</label>
-    <input id="email"  name="email" type="text" >
-    <p class="msg" id="emailMsg">必填，长度为4~16个字符</p>
-</div>
-<div  class="box">
-    <label>手机</label>
-    <input id="tel"  name="tel" type="tel" >
-    <p class="msg" id="telMsg">必填，长度为4~16个字符</p>
-</div>
-<button id="validator">验证</button>
+<form mothod="post" action="">
+    <div id="radio">
+        <input type="radio" name="radio" id="inschool" />在校生
+        <input type="radio" name="radio" id="outschool" />非在校生
+    </div>
+    <div id="selec">
+        <label for="inschool">学校</label>
+        <select id="area">
+            <option>北京</option>
+            <option>上海</option>
+            <option>杭州</option>
+        </select>
+        <select id="school">
+            <option>北京大学</option>
+        </select>
+    </div>
+    <div id="work">
+        工作单位
+        <input type="text" />
+    </div>
+
 </form>
-<script src="30.js"></script>
+
+<script src="task.js"></script>
 </body>
 </html>
