@@ -4,7 +4,32 @@
     <meta charset=UTF-8>
     <title>UI组件之排序表格</title>
     <style>
-        .numDiv{text-align: center;}
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        table{
+            text-align: center;
+            border-collapse:collapse;
+            margin: 50px;
+        }
+       .arrow{width:0px;
+           height:0px;
+           border-left: 8px solid transparent;
+           border-right: 8px solid transparent;
+           cursor: pointer;
+            right:30px;
+           position: absolute;
+       }
+
+        .up{ }
+        .down{ width:0px;
+            height:0px;display:block; margin-top:5px;
+            border-color:#fff  transparent;
+            border-width: 10px 10px 0px 10px;
+            border-style: solid;
+            cursor: pointer;}
+    /*    .numDiv{text-align: center;}
         table {
             margin:auto; position: relative;
             width: 60%;
@@ -41,63 +66,14 @@
             cursor: pointer;}
 
 
-
+*/
     </style>
 
 <body>
+<h3>学生成绩表，默认是按照学号排列的</h3>
 
-<div class="numDiv">
-    <h3>学生成绩表，默认是按照学号排列的</h3>
-    <table border="1" id="tblSort" sortCol="-1">
-        <thead>
-        <tr>
-            <th>姓名</th>
-            <th >语文<span><i class='up'></i><i class='down'></i></span></th>
-            <th>数学<span><i class='up'></i><i class='down'></i></span></th>
-            <th>英语<span><i class='up'></i><i class='down'></i></span></th>
-            <th>总分<span><i class='up'></i><i class='down'></i></span></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>小明</td>
-            <td>80</td>
-            <td>90</td>
-            <td>70</td>
-            <td>240</td>
-        </tr>
-        <tr>
-            <td>小红</td>
-            <td>90.5</td>
-            <td>60</td>
-            <td>90</td>
-            <td>240</td>
-        </tr>
-        <tr>
-            <td>小玲</td>
-            <td>60</td>
-            <td>100</td>
-            <td>70</td>
-            <td>230</td>
-        </tr>
-        <tr>
-            <td>笑笑</td>
-            <td>90</td>
-            <td>80</td>
-            <td>95</td>
-            <td>265</td>
-        </tr>
-        <tr>
-            <td>小亮</td>
-            <td>100</td>
-            <td>95</td>
-            <td>100</td>
-            <td>295</td>
-        </tr>
-
-        </tbody>
-    </table>
-</div>
+    <table id="tab"></table>
+<!--<script src="Table.js"></script>-->
 <script src="task.js"></script>
 </body>
 </html>
