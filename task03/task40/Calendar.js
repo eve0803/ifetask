@@ -1,7 +1,9 @@
-/**
- *@author:eve0803
- @time:2016/5/20
+/*
+ +------------------------------
+ @author:vczero
+ @time:2014/8/10
  @desc:简易日历组件
+ +------------------------------
  */
 (function(global){
     var Calendar = function(div, date){
@@ -18,10 +20,10 @@
     Calendar.week = ['星期一', '星期二','星期三', '星期四','星期五', '星期六', '星期日'];
 
     Calendar.prototype['showUI'] = function(callback){
-        var exist = document.getElementById('celldom');
+        var exist = document.getElementById('celldom_0');
         if(!!exist){
             for(var e = 0; e < 42; e++){
-                var node = document.getElementById('celldom' + e);
+                var node = document.getElementById('celldom_' + e);
                 node.onclick = null; //移除事件处理程序
                 this.div.removeChild(node);
             }
@@ -46,7 +48,7 @@
             cellDOM.style.cssFloat = 'left';
             cellDOM.style.cursor = 'pointer';
             cellDOM.style.textAlign = 'center';
-            cellDOM.id = 'celldom' + i;
+            cellDOM.id = 'celldom_' + i;
             cellDOM.style.lineHeight = cell.height + 'px';
             cellDOM.setAttribute('date',monthArr.date[i]); //设置日期对象到DOM属性date上
             cellDOM.innerHTML = monthArr.date[i].getDate();
@@ -64,7 +66,7 @@
         //使用父元素事件委托
         this.div.addEventListener('click',function(e){
             var node = e.target;
-            if(node.id.indexOf('celldom') > -1){
+            if(node.id.indexOf('celldom_') > -1){
                 var date = new Date(node.getAttribute('date')).toLocaleString();
                 callback(date.split('上午')[0]);
             }
@@ -85,8 +87,7 @@
         //包含左 时间 右的大DIV
         var dateDiv = document.createElement('div');
         dateDiv.style.width = '200px';
-        dateDiv.style.height = '35px';
-        dateDiv.style.lineHeight = '35px';
+        dateDiv.style.height = '22px';
         dateDiv.style.margin = '0 auto';
         dateDiv.style.textAlign = 'center';
         dateDiv.style.fontWeight = 'bold';
@@ -151,7 +152,7 @@
         var exist = document.getElementById('week_0');
         if(!!exist){
             for(var i = 0; i < 7; i++){
-                var node = document.getElementById('week' + i);
+                var node = document.getElementById('week_' + i);
                 node.onclick = null;
                 this.div.removeChild(node);
             }
@@ -167,7 +168,7 @@
             weekday.style.color = '#BFBFBF';
             weekday.style.fontWeight = 'bold';
             weekday.style.textAlign = 'center';
-            weekday.id = 'week' + n;
+            weekday.id = 'week_' + n;
             weekday.innerHTML = Calendar.week[n];
             this.div.appendChild(weekday);
         }
@@ -214,3 +215,5 @@
     global.Calendar = Calendar;
 
 })(window);
+
+
